@@ -1,2 +1,2 @@
-<app-single-question></app-single-question>
+<app-single-question *ngFor="let q of result" [singleQuestion]="q"></app-single-question>
 <app-form></app-form>

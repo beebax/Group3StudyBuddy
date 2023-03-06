@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Questions } from '../../Models/questions';
 
 @Component({
   selector: 'app-single-question',
   templateUrl: './single-question.component.html',
   styleUrls: ['./single-question.component.css']
 })
-export class SingleQuestionComponent implements OnInit {
+export class SingleQuestionComponent {
 
-  constructor() { }
+  @Input() singleQuestion: Questions = {} as Questions;
+  display:boolean = false;
 
-  ngOnInit(): void {
+  toggleDisplay():void{
+    this.display = !this.display;
   }
 
 }
+

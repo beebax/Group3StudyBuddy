@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Questions } from 'src/app/Models/questions';
+import { QuestionService } from 'src/app/Services/question.service';
 
 @Component({
   selector: 'app-question-list',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionListComponent implements OnInit {
 
-  constructor() { }
+ result:Questions[] = [];
 
-  ngOnInit(): void {
+  constructor(private questionService:QuestionService) { }
+
+  ngOnInit() {
+    this.questionService.getQuestions().subscribe((response:Questions[]) =>
+    { console.log(response);
+    this.result = response;
+  });
   }
 
 }

@@ -1,1 +1,4 @@
-<p>single-question works!</p>
+<h2 (click)="toggleDisplay()">{{singleQuestion.question1}}</h2>
+<div *ngIf="display">
+    <p>{{singleQuestion.answer}}</p>
+</div>
