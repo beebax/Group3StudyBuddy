@@ -10,7 +10,7 @@ import { QuestionService } from 'src/app/Services/question.service';
 })
 export class FormComponent {
 
-  @Output() 
+  @Output() newQuestionEvent = new EventEmitter<''>();
   display:boolean = false;
   newQuestion:Questions = {} as Questions;
   
@@ -23,7 +23,9 @@ export class FormComponent {
   createQuestion():void{
     this.questionService.addQuestion(this.newQuestion).subscribe((response:Questions) => {
       console.log(response);
-      this.questionService.getQuestions();
+      this.newQuestionEvent.emit();
+      this.toggleForm();
+
     });
   }
 

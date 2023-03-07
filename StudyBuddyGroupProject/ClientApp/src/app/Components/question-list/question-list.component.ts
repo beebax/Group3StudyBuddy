@@ -14,10 +14,13 @@ export class QuestionListComponent implements OnInit {
   constructor(private questionService:QuestionService) { }
 
   ngOnInit() {
+    this.getQuestions();
+  };
+  
+  getQuestions() {
     this.questionService.getQuestions().subscribe((response:Questions[]) =>
     { console.log(response);
     this.result = response;
-  });
-  }
-
+      })
+}
 }

@@ -13,7 +13,7 @@ namespace StudyBuddyGroupProject.Controllers
     {
         StudyDbContext dbContext = new StudyDbContext();
 
-        [HttpPut("addFavorite")]
+        [HttpPost("addFavorite")]
         public Favorite addFavorite(int _userQID, string _userName)
         {
             Favorite result = new Favorite()

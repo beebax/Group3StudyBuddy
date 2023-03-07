@@ -1,2 +1,2 @@
-<app-single-question *ngFor="let q of result" [singleQuestion]="q"></app-single-question>
-<app-form></app-form>
+<app-single-question *ngFor="let q of result" [singleQuestion]="q" (newFavoriteEvent)="getQuestions()"></app-single-question>
+<app-form (newQuestionEvent)="getQuestions()"></app-form>

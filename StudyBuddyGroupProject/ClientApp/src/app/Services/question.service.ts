@@ -11,8 +11,8 @@ export class QuestionService {
 
   constructor(@Inject('BASE_URL') private baseUrl:string, private http:HttpClient) { }
 
-  addFavorite(Qid:number, userName:string):Observable<Favorites>{
-    return this.http.get<Favorites>(`${this.baseUrl}api/favorite/addFavorite?_userQID=${Qid}&_userName=${userName}`);
+  addFavorite(newFavorite:Favorites):Observable<Favorites>{
+    return this.http.post<Favorites>(`${this.baseUrl}api/favorite/addFavorite?_userQID=${newFavorite.qid}&_userName=${newFavorite.userid}`,{});
   }
   removeFavorite(Qid:number, userName:string):Observable<Favorites>{
     return this.http.delete<Favorites>(`${this.baseUrl}api/favorite/removeFavorite?_userQID=${Qid}&_userName=${userName}`);
