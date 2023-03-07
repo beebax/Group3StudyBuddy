@@ -9,7 +9,7 @@ import { Questions } from '../Models/questions';
 })
 export class QuestionService {
 
-  constructor(@Inject('BASE_URL') private baseUrl: string, private http:HttpClient) { }
+  constructor(@Inject('BASE_URL') private baseUrl:string, private http:HttpClient) { }
 
   addFavorite(Qid:number, userName:string):Observable<Favorites>{
     return this.http.get<Favorites>(`${this.baseUrl}api/Favorite/addFavorite?_userQID=${Qid}&_userName=${userName}`);
