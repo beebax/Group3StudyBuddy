@@ -32,7 +32,7 @@ namespace StudyBuddyGroupProject.Controllers
             return dbContext.Questions.OrderByDescending(q => q.NumFav).ToList();
         }
 
-        [HttpPut("addQuestion")]
+        [HttpPost("addQuestion")]
         public Question addQuestion(string _question1, string _answer, string _category, string _author)
         {
             Question userQ = new Question()
