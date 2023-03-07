@@ -12,6 +12,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { QuestionListComponent } from './Components/question-list/question-list.component';
 import { SingleQuestionComponent } from './Components/single-question/single-question.component';
 import { FormComponent } from './Components/form/form.component';
+import { FavoriteListComponent } from './Components/favorite-list/favorite-list.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FormComponent } from './Components/form/form.component';
     FetchDataComponent,
     QuestionListComponent,
     SingleQuestionComponent,
-    FormComponent
+    FormComponent,
+    FavoriteListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,6 +35,7 @@ import { FormComponent } from './Components/form/form.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'question-list', component: QuestionListComponent },
+      { path: 'favorite-list', component: FavoriteListComponent}
 
     ])
   ],

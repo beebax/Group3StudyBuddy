@@ -34,4 +34,7 @@ getByFavorites():Observable<Questions[]>{
   deleteQuestion(questionId:number, userName:string):Observable<Questions>{
     return this.http.delete<Questions>(`${this.baseUrl}api/question/deleteQuestion?userDelete=${questionId}&userName=${userName}`);  
   }
+getUserFavorites(userName:string):Observable<Questions[]>{
+  return this.http.get<Questions[]>(`${this.baseUrl}api/favorite/getUserFavorites?_userName=${userName}`);
+}
 }

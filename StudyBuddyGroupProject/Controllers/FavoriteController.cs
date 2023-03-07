@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -44,6 +45,46 @@ namespace StudyBuddyGroupProject.Controllers
             dbContext.SaveChanges();
 
             return finalResult;
+        }
+
+        [HttpGet("getUserFavorites")]
+        public List<Question> getUserFavorites(string _userName)
+        {
+            //List<Favorite> result = dbContext.Favorites.Where(f => f.UserId == _userName).ToList();
+            //return dbContext.Questions.Where(q => result.Any(f => f.Qid == q.Id)).ToList();
+            //return dbContext.Questions.Where(q => q.Id.Contains(result.FirstOrDefault(f => f.Qid))).ToList();
+
+            //List<Favorite> result = dbContext.Favorties.FirstOrDefault(f => f.UserId == _userName);
+            //return dbContext.Questions.Where(q => q.Id.Contains(result.Qid)).ToList();
+
+            List<Favorite> result = dbContext.Favorites.Where(f => f.UserId == _userName).ToList();
+            List<Question> resultFav = new List<Question>();
+
+            foreach (Favorite f in result)
+            {
+
+                foreach (Question q in dbContext.Questions)
+                {
+
+                    if (f.Qid == q.Id)
+                    {
+                        resultFav.Add(q);
+            
+                    }
+                }
+            }
+
+            return resultFav;
+
+            //List<Question> resultFav = new List<Question>();
+
+            //foreach(Favorite f in result)
+            //{
+            //    if (dbContext.Questions.Contains(q => q.Id == f.Qid))
+            //    {
+
+            //    }
+            //}
         }
     }
 }
