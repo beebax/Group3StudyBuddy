@@ -23,16 +23,16 @@ public partial class StudyDbContext : DbContext
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
 
         //BELLE
-        //=> optionsBuilder.UseSqlServer("Server=localhost,1433; Initial Catalog=StudyDB; User ID=SA; Password=EnterPasswordHere9@; TrustServerCertificate=true;");
+        => optionsBuilder.UseSqlServer("Server=localhost,1433; Initial Catalog=StudyDB; User ID=SA; Password=EnterPasswordHere9@; TrustServerCertificate=true;");
 
-        //ETHAN
-        //=> optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=StudyDB;Trusted_Connection=True;Encrypt=False");
+    //ETHAN
+    //=> optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=StudyDB;Trusted_Connection=True;Encrypt=False");
 
-        //CAM
-        //=> optionsBuilder.UseSqlServer("Server=localhost,1433; Initial Catalog=StudyDB; User ID=SA; Password=EnterPasswordHere1; TrustServerCertificate=true;");
+    //CAM
+    //=> optionsBuilder.UseSqlServer("Server=localhost,1433; Initial Catalog=StudyDB; User ID=SA; Password=EnterPasswordHere1; TrustServerCertificate=true;");
 
-        //CARISSA
-        => optionsBuilder.UseSqlServer("Server=localhost,1433; Initial Catalog=StudyDB; User ID=SA; Password=GrandCircus1!; TrustServerCertificate=true;");
+    //CARISSA
+    //=> optionsBuilder.UseSqlServer("Server=localhost,1433; Initial Catalog=StudyDB; User ID=SA; Password=GrandCircus1!; TrustServerCertificate=true;");
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
