@@ -13,8 +13,9 @@ export class SingleQuestionComponent {
 
   //grabs the questions from the parent 
   @Input() singleQuestion: Questions = {} as Questions;
+  @Input() singleFavorite: Favorites = {} as Favorites;
   @Output() newFavoriteEvent = new EventEmitter<''>();
-
+  isFavorited:boolean=false;
 
   //toggeles answers on and off.
   display:boolean = false;
@@ -29,9 +30,10 @@ export class SingleQuestionComponent {
   singleFavorites:Favorites={} as Favorites;
   //Method that adds favorite when called. 
   addToFavorites():void{
+    this.isFavorited=true;
     //cause the favorites.qid to be the question.id that is selected. 
-    this.singleFavorites.qid=this.singleQuestion.id
-    this.singleFavorites.userid = this.user.id;
+    this.singleFavorites.qid=this.singleQuestion.id;
+    this.singleFavorites.userId = this.user.id;
     //goes to service with the favorites.qid and the favorites.username that was input.
     this.questionService.addFavorite(this.singleFavorites).subscribe((response:Favorites) => {
       console.log(response);
@@ -40,10 +42,22 @@ export class SingleQuestionComponent {
     });
   }
   removeFavorites():void{
+    this.isFavorited = false;
     this.singleFavorites.qid=this.singleQuestion.id;
+    this.singleFavorites.userId=this.user.id;
     this.questionService.removeFavorite(this.singleFavorites).subscribe((response:Favorites) => {
     console.log(response);
     this.newFavoriteEvent.emit();
+    });
+  }
+  checkIfAFavorite():void{
+    this.singleFavorites.qid=this.singleQuestion.id;
+    this.singleFavorites.userId=this.user.id;
+    console.log(this.singleFavorites)
+    this.questionService.checkIfAFavorite(this.singleFavorites).subscribe((response:boolean)=>{
+      this.isFavorited = response;
+      console.log(response);
+      
     });
   }
 
@@ -53,9 +67,9 @@ export class SingleQuestionComponent {
     this.authService.authState.subscribe((user) => {
      this.user = user;
      this.loggedIn = (user != null);
-     console.log(this.user)
+     console.log(this.user);
+     this.checkIfAFavorite();
    });
   }
-
 }
 

@@ -51,13 +51,7 @@ namespace StudyBuddyGroupProject.Controllers
         [HttpGet("getUserFavorites")]
         public List<Question> getUserFavorites(string _userName)
         {
-            //List<Favorite> result = dbContext.Favorites.Where(f => f.UserId == _userName).ToList();
-            //return dbContext.Questions.Where(q => result.Any(f => f.Qid == q.Id)).ToList();
-            //return dbContext.Questions.Where(q => q.Id.Contains(result.FirstOrDefault(f => f.Qid))).ToList();
-
-            //List<Favorite> result = dbContext.Favorties.FirstOrDefault(f => f.UserId == _userName);
-            //return dbContext.Questions.Where(q => q.Id.Contains(result.Qid)).ToList();
-
+           
             List<Favorite> result = dbContext.Favorites.Where(f => f.UserId == _userName).ToList();
             List<Question> resultFav = new List<Question>();
 
@@ -77,16 +71,15 @@ namespace StudyBuddyGroupProject.Controllers
 
             return resultFav;
 
-            //List<Question> resultFav = new List<Question>();
-
-            //foreach(Favorite f in result)
-            //{
-            //    if (dbContext.Questions.Contains(q => q.Id == f.Qid))
-            //    {
-
-            //    }
-            //}
         }
+        [HttpGet("checkIfAFavorite")]
+        public bool checkIfAFavorite(string _userName, int _Qid)
+        {
+            List<Favorite> personalFav = dbContext.Favorites.Where(f => f.UserId == _userName).ToList();
+
+            return personalFav.Any(f => f.Qid == _Qid);
+        }
+
     }
 }
 

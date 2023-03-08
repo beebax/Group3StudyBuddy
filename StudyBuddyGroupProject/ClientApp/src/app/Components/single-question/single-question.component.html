@@ -4,8 +4,7 @@
 </div>
 <h1>{{ singleQuestion.numFav }}</h1> -->
 <!-- Takes in user name and calls add to favorites method. -->
-<button (click)="addToFavorites()">☆</button>
-<button (click)="removeFavorites()">★</button>
+
 
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
@@ -33,3 +32,6 @@
     </div>
   </div>
 </div>
+{{singleQuestion.numFav}}
+<button *ngIf="isFavorited==false" (click)="addToFavorites()">☆</button>
+<button *ngIf="isFavorited==true" (click)="removeFavorites()">★</button>

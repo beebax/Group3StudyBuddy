@@ -12,10 +12,10 @@ export class QuestionService {
   constructor(@Inject('BASE_URL') private baseUrl:string, private http:HttpClient) { }
 
   addFavorite(newFavorite:Favorites):Observable<Favorites>{
-    return this.http.post<Favorites>(`${this.baseUrl}api/favorite/addFavorite?_userQID=${newFavorite.qid}&_userName=${newFavorite.userid}`,{});
+    return this.http.post<Favorites>(`${this.baseUrl}api/favorite/addFavorite?_userQID=${newFavorite.qid}&_userName=${newFavorite.userId}`,{});
   }
   removeFavorite(favorite:Favorites):Observable<Favorites>{
-    return this.http.delete<Favorites>(`${this.baseUrl}api/favorite/removeFavorite?_userQID=${favorite.qid}&_userName=${favorite.userid}`);
+    return this.http.delete<Favorites>(`${this.baseUrl}api/favorite/removeFavorite?_userQID=${favorite.qid}&_userName=${favorite.userId}`);
   }
 
   getQuestions():Observable<Questions[]>{
@@ -37,5 +37,7 @@ getByFavorites():Observable<Questions[]>{
 getUserFavorites(userName:string):Observable<Questions[]>{
   return this.http.get<Questions[]>(`${this.baseUrl}api/favorite/getUserFavorites?_userName=${userName}`);
 }
-
+checkIfAFavorite(checkFavorite:Favorites){
+  return this.http.get<boolean>(`${this.baseUrl}api/favorite/checkIfAFavorite?_userName=${checkFavorite.userId}&_Qid=${checkFavorite.qid}`);
+}
 }

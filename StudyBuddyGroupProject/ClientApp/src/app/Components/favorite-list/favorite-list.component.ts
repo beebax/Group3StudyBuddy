@@ -27,7 +27,6 @@ export class FavoriteListComponent implements OnInit {
      console.log(this.user)
    });
   }
-  _userName:string = "Ethan";
 
   getUserFavorites(){
     this.questionService.getUserFavorites(this.user.id).subscribe((response:Questions[]) => 
