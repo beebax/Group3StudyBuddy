@@ -1,9 +1,36 @@
-<h2 (click)="toggleDisplay()">{{singleQuestion.question1}}</h2>
+<!-- <h2 (click)="toggleDisplay()">{{ singleQuestion.question1 }}</h2>
 <div *ngIf="display">
-    <p>{{singleQuestion.answer}}</p>
+  <p>{{ singleQuestion.answer }}</p>
 </div>
-<h1> {{ singleQuestion.numFav }} </h1>
+<h1>{{ singleQuestion.numFav }}</h1> -->
 <!-- Takes in user name and calls add to favorites method. -->
-<input type="text" [(ngModel)]="singleFavorites.userid"> 
+<input type="text" [(ngModel)]="singleFavorites.userid" />
 <button (click)="addToFavorites()">☆</button>
 <button (click)="removeFavorites()">★</button>
+
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseOne"
+        aria-expanded="true"
+        aria-controls="collapseOne"
+      >
+        {{singleQuestion.question1}}
+      </button>
+    </h2>
+    <div
+      id="collapseOne"
+      class="accordion-collapse collapse show"
+      aria-labelledby="headingOne"
+      data-bs-parent="#accordionExample"
+    >
+      <div class="accordion-body">
+        {{singleQuestion.answer}}
+      </div>
+    </div>
+  </div>
+</div>

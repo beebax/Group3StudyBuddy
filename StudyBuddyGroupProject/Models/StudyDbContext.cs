@@ -24,10 +24,10 @@ public partial class StudyDbContext : DbContext
 
 
         //BELLE
-        //=> optionsBuilder.UseSqlServer("Server=localhost,1433; Initial Catalog=StudyDB; User ID=SA; Password=EnterPasswordHere9@; TrustServerCertificate=true;");
+        => optionsBuilder.UseSqlServer("Server=localhost,1433; Initial Catalog=StudyDB; User ID=SA; Password=EnterPasswordHere9@; TrustServerCertificate=true;");
 
         //ETHAN
-        => optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=StudyDB;Trusted_Connection=True;Encrypt=False");
+        //=> optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=StudyDB;Trusted_Connection=True;Encrypt=False");
 
         //CAM
         //=> optionsBuilder.UseSqlServer("Server=localhost,1433; Initial Catalog=StudyDB; User ID=SA; Password=EnterPasswordHere1; TrustServerCertificate=true;");
