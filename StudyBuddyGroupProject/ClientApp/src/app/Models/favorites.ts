@@ -1,5 +1,5 @@
 export interface Favorites {
     id:number;
-    userid:number;
+    userid:string;
     qid:number;
 }

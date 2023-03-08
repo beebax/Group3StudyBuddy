@@ -20,10 +20,11 @@ export class FavoriteListComponent implements OnInit {
   loggedIn: boolean = false;
   
   ngOnInit() {
-    this.getUserFavorites();
     this.authService.authState.subscribe((user) => {
      this.user = user;
      this.loggedIn = (user != null);
+     this.getUserFavorites();
+     console.log(this.user)
    });
   }
   _userName:string = "Ethan";
@@ -32,6 +33,7 @@ export class FavoriteListComponent implements OnInit {
     this.questionService.getUserFavorites(this.user.id).subscribe((response:Questions[]) => 
     { console.log(response);
       this.result = response;
+   
     })
   }
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StudyBuddyGroupProject;
+namespace StudyBuddyGroupProject.Models;
 
 public partial class Question
 {
@@ -16,5 +16,4 @@ public partial class Question
     public string? Author { get; set; }
 
     public int? NumFav { get; set; }
-
 }

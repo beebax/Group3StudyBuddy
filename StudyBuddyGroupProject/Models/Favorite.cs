@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StudyBuddyGroupProject;
+namespace StudyBuddyGroupProject.Models;
 
 public partial class Favorite
 {
