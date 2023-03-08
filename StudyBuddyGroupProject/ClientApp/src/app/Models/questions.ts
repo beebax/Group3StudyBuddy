@@ -4,5 +4,5 @@ export interface Questions {
     answer:string;
     category:string;
     author:string;
-    numfav:number;
+    numFav:number;
 }

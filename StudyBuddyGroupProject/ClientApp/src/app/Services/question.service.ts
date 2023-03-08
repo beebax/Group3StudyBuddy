@@ -14,8 +14,8 @@ export class QuestionService {
   addFavorite(newFavorite:Favorites):Observable<Favorites>{
     return this.http.post<Favorites>(`${this.baseUrl}api/favorite/addFavorite?_userQID=${newFavorite.qid}&_userName=${newFavorite.userid}`,{});
   }
-  removeFavorite(Qid:number, userName:string):Observable<Favorites>{
-    return this.http.delete<Favorites>(`${this.baseUrl}api/favorite/removeFavorite?_userQID=${Qid}&_userName=${userName}`);
+  removeFavorite(favorite:Favorites):Observable<Favorites>{
+    return this.http.delete<Favorites>(`${this.baseUrl}api/favorite/removeFavorite?_userQID=${favorite.qid}&_userName=${favorite.userid}`);
   }
 
   getQuestions():Observable<Questions[]>{
@@ -37,4 +37,5 @@ getByFavorites():Observable<Questions[]>{
 getUserFavorites(userName:string):Observable<Questions[]>{
   return this.http.get<Questions[]>(`${this.baseUrl}api/favorite/getUserFavorites?_userName=${userName}`);
 }
+
 }

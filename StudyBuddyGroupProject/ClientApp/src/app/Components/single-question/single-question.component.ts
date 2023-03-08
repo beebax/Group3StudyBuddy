@@ -35,7 +35,14 @@ export class SingleQuestionComponent {
       this.newFavoriteEvent.emit();
 
     });
-}
+  }
+  removeFavorites():void{
+    this.singleFavorites.qid=this.singleQuestion.id;
+    this.questionService.removeFavorite(this.singleFavorites).subscribe((response:Favorites) => {
+    console.log(response);
+    this.newFavoriteEvent.emit();
+    });
+  }
 
 }
 
