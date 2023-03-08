@@ -1,3 +1,5 @@
+
+import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { Favorites } from 'src/app/Models/favorites';
 import { Questions } from 'src/app/Models/questions';
@@ -13,16 +15,21 @@ export class FavoriteListComponent implements OnInit {
 
   result:Questions[] = [];
 
-  constructor(private questionService:QuestionService) { }
-
+  constructor(private questionService:QuestionService, private authService: SocialAuthService) { }
+  user: SocialUser = {} as SocialUser;
+  loggedIn: boolean = false;
+  
   ngOnInit() {
-   this.getUserFavorites();
-  };
-
+    this.getUserFavorites();
+    this.authService.authState.subscribe((user) => {
+     this.user = user;
+     this.loggedIn = (user != null);
+   });
+  }
   _userName:string = "Ethan";
 
   getUserFavorites(){
-    this.questionService.getUserFavorites(this._userName).subscribe((response:Questions[]) => 
+    this.questionService.getUserFavorites(this.user.id).subscribe((response:Questions[]) => 
     { console.log(response);
       this.result = response;
     })
