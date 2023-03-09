@@ -13,7 +13,6 @@ export class SingleQuestionComponent {
 
   //grabs the questions from the parent 
   @Input() singleQuestion: Questions = {} as Questions;
-  @Input() singleFavorite: Favorites = {} as Favorites;
   @Output() newFavoriteEvent = new EventEmitter<''>();
   isFavorited:boolean=false;
 
