@@ -25,7 +25,11 @@
     "@angular/platform-server": "^14.0.3",
     "@angular/router": "^14.0.3",
     "bootstrap": "^5.2.3",
+<<<<<<< HEAD
     "jquery": "^3.6.0",
+=======
+    "jquery": "^3.6.4",
+>>>>>>> 316491038d37ff51966581ff4de327f6fee0a892
     "oidc-client": "^1.11.5",
     "popper.js": "^1.16.0",
     "run-script-os": "^1.1.6",

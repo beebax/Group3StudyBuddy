@@ -1,29 +1,19 @@
 <div class="accordion" id="accordionExample">
-  <div class="panel">
-    <h2 class="accordion-header" id="headingOne">
-      <button
-        class="accordion-button"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapseOne"
-        aria-expanded="true"
-        aria-controls="collapseOne"
-      >
-        {{singleQuestion.question1}}
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne" (click)="toggleDisplay()">
+      <button class="accordion-button collapsed" type="button">
+       <strong>{{ singleQuestion.question1 }}</strong> 
       </button>
     </h2>
-    <div
-      id="collapseOne"
-      class="accordion-collapse collapse show"
-      aria-labelledby="headingOne"
-      data-bs-parent="#accordionExample"
-    >
+    <div *ngIf="display">
       <div class="accordion-body">
-        {{singleQuestion.answer}}
+        {{ singleQuestion.answer }}
       </div>
     </div>
   </div>
 </div>
-{{singleQuestion.numFav}}
-<button *ngIf="isFavorited==false" (click)="addToFavorites()">☆</button>
-<button *ngIf="isFavorited==true" (click)="removeFavorites()">★</button>
+{{ singleQuestion.numFav }}
+<button *ngIf="isFavorited == false" (click)="addToFavorites()">☆</button>
+<button *ngIf="isFavorited == true" (click)="removeFavorites()">★</button>
+<br />
+<br />
