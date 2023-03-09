@@ -31,13 +31,16 @@ getByFavorites():Observable<Questions[]>{
   addQuestion(newQuestion:Questions):Observable<Questions>{
     return this.http.post<Questions>(`${this.baseUrl}api/question/addQuestion?_question1=${newQuestion.question1}&_answer=${newQuestion.answer}&_category=${newQuestion.category}&_author=${newQuestion.author}`,{});  
   }
-  deleteQuestion(questionId:number, userName:string):Observable<Questions>{
-    return this.http.delete<Questions>(`${this.baseUrl}api/question/deleteQuestion?userDelete=${questionId}&userName=${userName}`);  
+  deleteQuestion(questionId:Questions):Observable<Questions>{
+    return this.http.delete<Questions>(`${this.baseUrl}api/question/deleteQuestion?userDelete=${questionId.id}`);  
   }
 getUserFavorites(userName:string):Observable<Questions[]>{
   return this.http.get<Questions[]>(`${this.baseUrl}api/favorite/getUserFavorites?_userName=${userName}`);
 }
 checkIfAFavorite(checkFavorite:Favorites){
   return this.http.get<boolean>(`${this.baseUrl}api/favorite/checkIfAFavorite?_userName=${checkFavorite.userId}&_Qid=${checkFavorite.qid}`);
+}
+checkIfAuthor(question:Questions):Observable<boolean>{
+  return this.http.get<boolean>(`${this.baseUrl}api/question/checkIfAuthor?_id=${question.id}&_author=${question.author}`);  
 }
 }
