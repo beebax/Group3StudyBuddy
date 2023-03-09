@@ -52,22 +52,23 @@ namespace StudyBuddyGroupProject.Controllers
         }
 
         [HttpDelete("deleteQuestion")]
-        public Question deleteQuestion(int userDelete, string userName)
+        public Question deleteQuestion(int userDelete)
         {
             Question result = dbContext.Questions.FirstOrDefault(q => q.Id == userDelete);
 
-            if(result.Author == userName)
-            {
+     
                 dbContext.Remove(result);
                 dbContext.SaveChanges();
-            }
-            else
-            {
-                Console.WriteLine("You cannot delete questions you didn't author.");
-            }
-
             return result;
 
+        }
+
+        [HttpGet("checkIfAuthor")]
+        public bool checkIfAuthor(int _id, string _author)
+        {
+            Question result = dbContext.Questions.FirstOrDefault(f => f.Id == _id);
+
+            return result.Author == _author;
         }
 
     }

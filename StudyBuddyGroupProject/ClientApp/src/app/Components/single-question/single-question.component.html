@@ -12,8 +12,9 @@
     </div>
   </div>
 </div>
-{{ singleQuestion.numFav }}
-<button *ngIf="isFavorited == false" (click)="addToFavorites()">☆</button>
-<button *ngIf="isFavorited == true" (click)="removeFavorites()">★</button>
+Favorites: {{ singleQuestion.numFav }}
+<button *ngIf="isFavorited == false && isLoggedIn()" (click)="addToFavorites()">☆</button>
+<button *ngIf="isFavorited == true && isLoggedIn()" (click)="removeFavorites()">★</button>
 <br />
 <br />
+<button *ngIf="isAuthored == true" (click)="deleteQuestion()">Delete</button> 
